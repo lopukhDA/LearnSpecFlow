@@ -85,6 +85,7 @@
     <Compile Include="Steps\MainMenuSteps.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Features\SpecFlowMenuTests1.feature" />
     <None Include="Features\SpecFlowMenuTests.feature" />
     <None Include="packages.config" />
   </ItemGroup>

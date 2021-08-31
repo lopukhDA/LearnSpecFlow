@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -6,24 +7,24 @@ namespace LearnSpecFlow.Base
 {
 	public class DriverManager
     {
-        private static IWebDriver driver;
+        private static ThreadLocal<IWebDriver> driver = new ThreadLocal<IWebDriver>();
 
         public static IWebDriver Instance()
         {
-            if (driver == null)
+            if (driver.Value == null)
             {
-                driver = new ChromeDriver();
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-                driver.Manage().Window.Maximize();
+                driver.Value = new ChromeDriver();
+                driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+                driver.Value.Manage().Window.Maximize();
             }
 
-            return driver;
+            return driver.Value;
         }
 
         public static void QuitDriver()
         {
-            driver.Quit();
-            driver = null;
+            Instance().Quit();
+            driver.Value = null;
         }
     }
 }
