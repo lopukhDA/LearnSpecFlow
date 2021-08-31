@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LearnSpecFlow
+namespace LearnSpecFlow.Pages
 {
-    public class Class1
-    {
-    }
+	public class HomePage : BasePage
+	{
+		private string Url => "https://specflow.org";
+
+
+	}
 }
