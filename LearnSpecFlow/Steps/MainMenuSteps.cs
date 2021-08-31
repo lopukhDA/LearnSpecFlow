@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using LearnSpecFlow.Base;
+using LearnSpecFlow.Pages;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace LearnSpecFlow.Steps
@@ -22,26 +24,31 @@ namespace LearnSpecFlow.Steps
 		[Given(@"I open official Specflow web site")]
 		public void OpenOfficialSpecflowWebSite()
 		{
-			ScenarioContext.Current.Pending();
+			HomePage.Instance.OpenSpecFlowHomePage();
 		}
 
 		[When(@"I hover the '(.*)' menu item from the main menu")]
 		public void HoverTheMenuItemFromTheMainMenu(string menuItem)
 		{
-			ScenarioContext.Current.Pending();
+			HomePage.Instance.HoverMainMenuItem(menuItem);
 		}
 
 		[When(@"I click the '(.*)' option from sub menu")]
 		public void ClickTheOptionFromSubMenu(string option)
 		{
-			ScenarioContext.Current.Pending();
+			HomePage.Instance.ClickSubMenuItem(option);
 		}
 
 		[Then(@"Page with '(.*)' title should be opened")]
 		public void PageWithTitleShouldBeOpened(string title)
 		{
-			ScenarioContext.Current.Pending();
+			Assert.IsTrue(GettingStartedPage.Instance.IsPageTitleDisplayed(), "Page title for the page is not displayed");
 		}
 
+		[AfterTestRun]
+		public static void AfterTestRun()
+		{
+			DriverManager.QuitDriver();
+		}
 	}
 }

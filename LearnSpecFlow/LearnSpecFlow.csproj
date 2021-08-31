@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Base\DriverManager.cs" />
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\GettingStartedPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\MainMenuSteps.cs" />

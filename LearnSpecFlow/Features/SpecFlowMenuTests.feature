@@ -7,5 +7,5 @@
 Scenario: Clicking Getting Started option from the main menu should open Getting Started page
 	Given I open official Specflow web site 
 	When I hover the 'Docs' menu item from the main menu
-	And I click the 'Gettig Started' option from sub menu
-	Then Page with 'Getting Started' title should be opened
+	And I click the 'Step-By-Step Getting Started Guides' option from sub menu
+	Then Page with 'Welcome to the Step-By-Step Getting Started Guide!' title should be opened
