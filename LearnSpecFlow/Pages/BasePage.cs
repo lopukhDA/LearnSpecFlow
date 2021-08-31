@@ -8,10 +8,16 @@ namespace LearnSpecFlow.Pages
 {
 	public class BasePage
 	{
+		private string TitleXpath => "//h1[text()='{0}']";
+
 		public BasePage() 
 		{
 			
 		}
+
+		private static BasePage _basePage;
+
+		public static BasePage Instance => _basePage ?? (_basePage = new BasePage());
 
 		public IWebElement FindElement(By locator)
 		{
@@ -28,6 +34,11 @@ namespace LearnSpecFlow.Pages
 			var wait = new WebDriverWait(DriverManager.Instance(), TimeSpan.FromSeconds(timeout));
 
 			return wait.Until(d => DriverManager.Instance().FindElement(locator).Displayed);
+		}
+
+		public bool IsPageTitleDisplayed(string pageTitle)
+		{
+			return IsDisplayed(By.XPath(string.Format(TitleXpath, pageTitle)));
 		}
 	}
 }

@@ -75,16 +75,24 @@ namespace LearnSpecFlow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Clicking Getting Started option from the main menu should open Getting Started pa" +
-            "ge")]
+        [NUnit.Framework.DescriptionAttribute("Clicking menu option from the main menu should open corresponding page")]
         [NUnit.Framework.CategoryAttribute("smoke")]
-        public virtual void ClickingGettingStartedOptionFromTheMainMenuShouldOpenGettingStartedPage()
+        [NUnit.Framework.TestCaseAttribute("Docs", "Step-By-Step Getting Started Guides", "Welcome to the Step-By-Step Getting Started Guide!", null)]
+        [NUnit.Framework.TestCaseAttribute("Docs", "Binding Tests", "Bindings", null)]
+        public virtual void ClickingMenuOptionFromTheMainMenuShouldOpenCorrespondingPage(string menuItem, string subMenuItem, string title, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "smoke"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking Getting Started option from the main menu should open Getting Started pa" +
-                    "ge", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("menuItem", menuItem);
+            argumentsOfScenario.Add("subMenuItem", subMenuItem);
+            argumentsOfScenario.Add("title", title);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Clicking menu option from the main menu should open corresponding page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -109,14 +117,13 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I open official Specflow web site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
- testRunner.When("I hover the \'Docs\' menu item from the main menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I hover the \'{0}\' menu item from the main menu", menuItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.And("I click the \'Step-By-Step Getting Started Guides\' option from sub menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I click the \'{0}\' option from sub menu", subMenuItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
- testRunner.Then("Page with \'Welcome to the Step-By-Step Getting Started Guide!\' title should be op" +
-                        "ened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("Page with \'{0}\' title should be opened", title), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
